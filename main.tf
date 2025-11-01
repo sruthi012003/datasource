@@ -8,7 +8,7 @@ data "aws_vpc" "existing_vpc" {
  
 resource "aws_subnet" "example_subnet" {
   vpc_id            = data.aws_vpc.existing_vpc.id
-  cidr_block        = cidrsubnet(data.aws_vpc.selected.cidr_block, 4, 1)
+  cidr_block        = "10.0.16.0/24"
   availability_zone = "us-east-1a" # updated to match region
  
   tags = {
@@ -23,6 +23,7 @@ resource "aws_internet_gateway" "gw" {
     Name = "datasource-Terraform-internet-gateway"
   }
 }
+
 
 
 
